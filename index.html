@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#3d0718">
+<title>La Red Clandestina · Academia</title>
+<meta name="description" content="Aprende a utilizar La Red Clandestina paso a paso.">
+<style>
+:root{
+  --burgundy:#4a0920; --burgundy2:#700f32; --pink:#ed2b83;
+  --cream:#f7efe4; --paper:#fbf6ee; --card:#fffaf4;
+  --gold:#c59d52; --text:#542c35; --muted:#826f70;
+  --line:#e3d7cc; --blush:#f4dfdf; --shadow:0 14px 40px rgba(70,15,32,.08);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--text);font-family:Arial,Helvetica,sans-serif}
+a{text-decoration:none;color:inherit}
+button{font:inherit}
+.serif{font-family:Georgia,"Times New Roman",serif}
+.script{font-family:"Brush Script MT","Segoe Script",cursive}
+.container{width:min(1160px,calc(100% - 36px));margin:auto}
+
+/* NAV */
+.site-nav{position:sticky;top:0;z-index:50;background:rgba(43,5,16,.97);border-bottom:1px solid rgba(197,157,82,.45);backdrop-filter:blur(10px)}
+.nav-inner{min-height:68px;display:flex;align-items:center;gap:28px}
+.brand{font-size:30px;color:#ff3f91;white-space:nowrap}
+.nav-links{margin-left:auto;display:flex;align-items:center;gap:26px}
+.nav-links a{color:#f9eee4;font-size:12px;letter-spacing:.13em;text-transform:uppercase;padding:25px 0}
+.nav-links a.active{color:#e8c96e;border-bottom:2px solid var(--pink)}
+.app-btn{background:var(--pink)!important;color:white!important;border-radius:999px;padding:13px 18px!important;border:0!important}
+.mobile-menu{display:none;color:white;background:none;border:0;font-size:25px}
+
+/* HERO */
+.hero{color:#f8eee4;background:
+ linear-gradient(90deg,rgba(43,5,16,.96),rgba(43,5,16,.53)),
+ radial-gradient(circle at 76% 42%,rgba(237,43,131,.26),transparent 30%),
+ linear-gradient(140deg,#5b0a20,#1d030b 65%,#5d0c26)}
+.hero-inner{padding:88px 0 76px;min-height:510px;display:flex;flex-direction:column;justify-content:flex-end}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+.hero h1{font-size:clamp(52px,7vw,88px);font-weight:400;line-height:.9;margin:18px 0 22px;max-width:760px}
+.hero p{font-size:19px;line-height:1.55;max-width:650px;color:#eadbd2}
+.signature{align-self:flex-end;margin:12px 8% 0 0;color:#e7c66e;font-size:26px;line-height:1.05;transform:rotate(-5deg)}
+
+/* ACADEMY */
+.section{padding:76px 0}
+.intro{display:flex;justify-content:space-between;align-items:end;gap:40px;margin-bottom:30px}
+h2{font-size:clamp(36px,4.5vw,56px);font-weight:400;line-height:1;margin:12px 0}
+.lead{max-width:700px;color:var(--muted);font-size:17px;line-height:1.55;margin:0}
+.progress{width:240px;flex:none}
+.progress-line{display:flex;justify-content:space-between;font-size:12px;margin-bottom:7px;color:var(--muted)}
+.progress-track{height:7px;background:#e4d5ca;border-radius:10px;overflow:hidden}
+.progress-fill{height:100%;width:12.5%;background:var(--pink);border-radius:10px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.card{background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow);transition:.2s transform,.2s box-shadow;overflow:hidden}
+.card:hover{transform:translateY(-4px);box-shadow:0 18px 48px rgba(70,15,32,.12)}
+.thumb{position:relative;aspect-ratio:4/3;overflow:hidden;background:#4a0920}
+.thumb img{width:100%;height:100%;object-fit:cover;object-position:center}
+.thumb:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 50%,rgba(25,3,10,.35))}
+.num{position:absolute;z-index:2;top:12px;left:12px;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:#a90e46;color:#fff;font:18px Georgia,serif}
+.card-body{padding:17px}
+.card h3{font:22px/1.1 Georgia,serif;margin:0 0 9px;color:#5b2430}
+.card p{font-size:13px;line-height:1.45;color:var(--muted);margin:0 0 14px}
+.time{display:inline-block;background:#f1dddd;color:#8d5963;border-radius:999px;padding:7px 10px;font-size:11px}
+
+/* LESSON */
+.lesson{padding:72px 0;max-width:930px;margin:auto}
+.lesson-top{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-bottom:25px}
+.lesson h2{font-size:clamp(42px,6vw,70px);max-width:800px}
+.lesson-sub{font-size:18px;color:var(--muted);line-height:1.5}
+.video{margin:30px 0;background:#1d030b;aspect-ratio:16/9;display:grid;place-items:center;overflow:hidden;box-shadow:var(--shadow)}
+.video iframe{width:100%;height:100%;border:0}
+.video-placeholder{text-align:center;color:#f5e8dd;padding:25px}
+.play{width:72px;height:72px;border-radius:50%;background:var(--pink);display:grid;place-items:center;margin:0 auto 14px;font-size:25px}
+.video-placeholder small{color:#cdbec0}
+.learning{background:var(--blush);padding:28px 30px;margin-top:26px}
+.learning h3,.why h3{font:30px Georgia,serif;margin:0 0 16px}
+.learning ul{list-style:none;margin:0;padding:0;display:grid;gap:11px}
+.learning li{display:flex;gap:10px;line-height:1.45}
+.check{font-weight:700;color:#a30d43}
+.why{padding:35px 0}
+.why p{color:var(--muted);line-height:1.7;margin:0;max-width:800px}
+.steps{display:grid;gap:12px;margin:22px 0}
+.step{padding:18px 20px;background:var(--card);border:1px solid var(--line)}
+.step strong{color:var(--burgundy2)}
+.screens{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:26px 0}
+.screens img{width:100%;border:1px solid var(--line);box-shadow:var(--shadow)}
+.try{display:flex;justify-content:space-between;align-items:center;gap:24px;background:#f1d7d8;padding:26px 28px}
+.try h3{font:28px Georgia,serif;margin:0 0 7px}
+.try p{margin:0;color:var(--muted);line-height:1.45}
+.try a{white-space:nowrap;background:var(--burgundy2);color:white;padding:14px 20px;border-radius:999px;font-weight:700;font-size:12px;letter-spacing:.08em}
+
+/* FOOTER CTA */
+.cta{background:
+ linear-gradient(90deg,rgba(60,7,22,.95),rgba(60,7,22,.85)),
+ linear-gradient(135deg,#5a0b22,#25040d);
+color:#f8eee4;text-align:center;padding:70px 0}
+.cta h2{max-width:720px;margin:0 auto 12px}
+.cta p{color:#e8d8d0;margin:0}
+.cta a{display:inline-block;background:var(--pink);color:white;padding:15px 25px;border-radius:999px;margin-top:18px;font-weight:700;letter-spacing:.07em;font-size:12px}
+footer{background:#21040d;color:#cdbbc0;text-align:center;padding:28px;font-size:11px}
+
+/* MOBILE */
+@media(max-width:900px){
+  .container{width:min(100% - 28px,700px)}
+  .nav-inner{overflow:hidden}
+  .nav-links{gap:16px;overflow-x:auto;margin-left:0}
+  .nav-links a{font-size:10px;padding:24px 0;white-space:nowrap}
+  .brand{font-size:25px}
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .intro{flex-direction:column;align-items:flex-start}
+  .progress{width:100%}
+  .signature{margin-right:4%}
+}
+@media(max-width:600px){
+  .container{width:calc(100% - 28px)}
+  .site-nav{position:sticky}
+  .nav-inner{min-height:60px;gap:16px}
+  .brand{font-size:24px}
+  .nav-links{gap:14px}
+  .nav-links a{font-size:9px;letter-spacing:.08em;padding:21px 0}
+  .nav-links .app-btn{padding:10px 12px!important}
+  .hero-inner{min-height:590px;padding:65px 0 50px}
+  .hero h1{font-size:54px}
+  .hero p{font-size:16px}
+  .signature{font-size:22px;margin:20px 10% 0 auto}
+  .section{padding:52px 0}
+  .grid{grid-template-columns:1fr;gap:14px}
+  .thumb{aspect-ratio:16/9}
+  .card-body{padding:16px}
+  .card h3{font-size:24px}
+  .card p{font-size:14px}
+  .lesson{padding:52px 14px}
+  .lesson-top{font-size:11px}
+  .lesson h2{font-size:44px}
+  .lesson-sub{font-size:16px}
+  .video{margin:22px 0}
+  .learning{padding:23px 20px}
+  .screens{grid-template-columns:1fr 1fr}
+  .try{flex-direction:column;align-items:flex-start;padding:24px}
+  .try a{width:100%;text-align:center}
+  .cta{padding:55px 14px}
+}
+@media(max-width:380px){
+  .nav-links a:nth-child(2),.nav-links a:nth-child(3),.nav-links a:nth-child(4){display:none}
+  .hero h1{font-size:48px}
+  .screens{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <nav class="container nav-inner" aria-label="Navegación principal">
+    <a href="#top" class="brand script">La Clandestina</a>
+    <div class="nav-links">
+      <a href="#academia" class="active">La Red</a>
+      <a href="#veladas">Veladas</a>
+      <a href="#talleres">Talleres</a>
+      <a href="#podcast">Podcast</a>
+      <a class="app-btn" href="APP_URL" target="_blank" rel="noopener">Entrar en la app →</a>
+    </div>
+  </nav>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="container hero-inner">
+    <div class="eyebrow">✦ La Red Clandestina</div>
+    <h1 class="serif">Aprende<br>a utilizar La Red</h1>
+    <p>Descubre paso a paso cómo funciona, cómo formar parte de la comunidad y cómo aprovechar de verdad las conexiones que nacen dentro.</p>
+    <div class="signature script">Conecta<br>Colabora<br>Crece juntas ♡</div>
+  </div>
+</section>
+
+<section class="section" id="academia">
+<div class="container">
+  <div class="intro">
+    <div>
+      <div class="eyebrow" style="color:#8d123e">Academia · La Red</div>
+      <h2 class="serif">8 pasos para empezar</h2>
+      <p class="lead">Una guía sencilla para entrar, entender cada espacio y empezar a crear conexiones reales.</p>
+    </div>
+    <div class="progress">
+      <div class="progress-line"><span>Tu progreso</span><strong>0/8</strong></div>
+      <div class="progress-track"><div class="progress-fill"></div></div>
+    </div>
+  </div>
+
+  <div class="grid">
+    <a class="card" href="#lesson-1"><div class="thumb"><img src="assets/bienvenida.jpg" alt=""><div class="num">01</div></div><div class="card-body"><h3>Bienvenida a La Red</h3><p>Qué es, por qué nace y qué viene a solucionar.</p><span class="time">◷ 2 min</span></div></a>
+    <a class="card" href="#lesson-2"><div class="thumb"><img src="assets/icono.jpg" alt=""><div class="num">02</div></div><div class="card-body"><h3>Añade La Red a tu pantalla de inicio</h3><p>Convierte el enlace en un icono de tu móvil.</p><span class="time">◷ 2 min</span></div></a>
+    <a class="card" href="#lesson-3"><div class="thumb"><img src="assets/login.jpg" alt=""><div class="num">03</div></div><div class="card-body"><h3>Regístrate y entra</h3><p>Crea tu acceso y entra en La Red.</p><span class="time">◷ 3 min</span></div></a>
+    <a class="card" href="#lesson-4"><div class="thumb"><img src="assets/red.jpg" alt=""><div class="num">04</div></div><div class="card-body"><h3>Estás dentro: conoce La Red</h3><p>Descubre Red, Sinergias, Brindis y Perfil.</p><span class="time">◷ 2 min</span></div></a>
+    <a class="card" href="#lesson-5"><div class="thumb"><img src="assets/red.jpg" alt=""><div class="num">05</div></div><div class="card-body"><h3>La Red</h3><p>Busca, filtra, descubre perfiles y guarda favoritas.</p><span class="time">◷ 3 min</span></div></a>
+    <a class="card" href="#lesson-6"><div class="thumb"><img src="assets/sinergias.jpg" alt=""><div class="num">06</div></div><div class="card-body"><h3>Sinergias</h3><p>Encuentra coincidencias entre lo que necesitas y ofreces.</p><span class="time">◷ 3 min</span></div></a>
+    <a class="card" href="#lesson-7"><div class="thumb"><img src="assets/brindis.jpg" alt=""><div class="num">07</div></div><div class="card-body"><h3>El Brindis</h3><p>Comparte y celebra lo que conseguís juntas.</p><span class="time">◷ 3 min</span></div></a>
+    <a class="card" href="#lesson-8"><div class="thumb"><img src="assets/perfil.jpg" alt=""><div class="num">08</div></div><div class="card-body"><h3>Tu perfil</h3><p>Haz que las demás sepan quién eres y qué puedes aportar.</p><span class="time">◷ 3 min</span></div></a>
+  </div>
+</div>
+</section>
+
+<!-- 01 -->
+<section class="lesson" id="lesson-1">
+<div class="lesson-top"><a href="#academia">← Volver a La Red</a><span>01 / 08</span></div>
+<div class="eyebrow" style="color:#8d123e">La Red · Tutorial 01</div>
+<h2 class="serif">Bienvenida a La Red</h2>
+<p class="lesson-sub">Qué es, por qué se ha creado y qué solución aporta.</p>
+<div class="video" data-video="VIDEO_01"><div class="video-placeholder"><div class="play">▶</div><strong>Aquí irá tu vídeo</strong><br><small>Cuando lo subas a YouTube como oculto, pegaremos aquí el enlace.</small></div></div>
+<div class="learning"><h3>¿Qué vas a aprender?</h3><ul>
+<li><span class="check">✓</span><span>Qué es La Red y por qué nace.</span></li>
+<li><span class="check">✓</span><span>Qué tipo de mujeres puedes encontrar dentro.</span></li>
+<li><span class="check">✓</span><span>Qué puedes hacer dentro de La Red.</span></li>
+<li><span class="check">✓</span><span>Cómo puede ayudarte en tu camino profesional.</span></li>
+</ul></div>
+<div class="why"><h3>La idea detrás de La Red</h3><p>Una red para conectar a mujeres con valores compartidos y convertir esas conexiones en oportunidades reales de colaboración, apoyo y crecimiento.</p></div>
+</section>
+
+<!-- 02 -->
+<section class="lesson" id="lesson-2">
+<div class="lesson-top"><a href="#academia">← Volver a La Red</a><span>02 / 08</span></div>
+<div class="eyebrow" style="color:#8d123e">La Red · Tutorial 02</div>
+<h2 class="serif">Añade La Red a tu pantalla de inicio</h2>
+<p class="lesson-sub">Así tendrás La Red a mano, como si fuera una aplicación más de tu móvil.</p>
+<div class="video" data-video="VIDEO_02"><div class="video-placeholder"><div class="play">▶</div><strong>Aquí irá tu vídeo</strong><br><small>Mostraremos el proceso real en iPhone y, si quieres, también Android.</small></div></div>
+<div class="steps">
+<div class="step"><strong>1 · Abre el enlace de La Red</strong><br>Entra desde Safari/tu navegador.</div>
+<div class="step"><strong>2 · Añádela a la pantalla de inicio</strong><br>Te enseñaremos dónde tocar paso a paso.</div>
+<div class="step"><strong>3 · Encuentra el icono</strong><br>Ya tendrás <em>LaRedClandestina</em> lista para entrar.</div>
+</div>
+<div class="screens"><img src="assets/bienvenida.jpg" alt="Pantalla de bienvenida"><img src="assets/icono.jpg" alt="Icono La Red Clandestina"></div>
+</section>
+
+<!-- 03 -->
+<section class="lesson" id="lesson-3">
+<div class="lesson-top"><a href="#academia">← Volver a La Red</a><span>03 / 08</span></div>
+<div class="eyebrow" style="color:#8d123e">La Red · Tutorial 03</div>
+<h2 class="serif">Regístrate y entra</h2>
+<p class="lesson-sub">Crea tu acceso o entra con tu email y contraseña.</p>
+<div class="video" data-video="VIDEO_03"><div class="video-placeholder"><div class="play">▶</div><strong>Aquí irá tu vídeo</strong></div></div>
+<div class="screens"><img src="assets/login.jpg" alt="Acceso privado a La Red"></div>
+<div class="why"><h3>Una vez dentro...</h3><p>La Red te lleva directamente a tu espacio. Desde ahí podrás moverte entre Red, Sinergias, Brindis y Perfil.</p></div>
+</section>
+
+<!-- 04 -->
+<section class="lesson" id="lesson-4">
+<div class="lesson-top"><a href="#academia">← Volver a La Red</a><span>04 / 08</span></div>
+<div class="eyebrow" style="color:#8d123e">La Red · Tutorial 04</div>
+<h2 class="serif">Estás dentro: conoce La Red</h2>
+<p class="lesson-sub">Esta es tu pantalla de inicio. Desde aquí tienes acceso a los cuatro espacios de La Red.</p>
+<div class="video" data-video="VIDEO_04"><div class="video-placeholder"><div class="play">▶</div><strong>Aquí irá tu vídeo</strong></div></div>
+<div class="screens"><img src="assets/red.jpg" alt="Pantalla principal de La Red"></div>
+<div class="steps">
+<div class="step"><strong>👥 Red</strong> · Descubre a las mujeres de la comunidad.</div>
+<div class="step"><strong>✦ Sinergias</strong> · Encuentra coincidencias entre lo que necesitas y lo que otras ofrecen.</div>
+<div class="step"><strong>🥂 Brindis</strong> · Celebra y comparte lo que conseguís juntas.</div>
+<div class="step"><strong>♡ Perfil</strong> · Gestiona tu presencia, tus necesidades y lo que puedes aportar.</div>
+</div>
+</section>
+
+<!-- 05 -->
+<section class="lesson" id="lesson-5">
+<div class="lesson-top"><a href="#academia">← Volver a La Red</a><span>05 / 08</span></div>
+<div class="eyebrow" style="color:#8d123e">La Red · Tutorial 05</div>
+<h2 class="serif">La Red</h2>
+<p class="lesson-sub">Encuentra profesionales, explora perfiles y guarda a tus favoritas.</p>
+<div class="video" data-video="VIDEO_05"><div class="video-placeholder"><div class="play">▶</div><strong>Aquí irá tu vídeo</strong></div></div>
+<div class="screens"><img src="assets/red.jpg" alt="Buscador de La Red"></div>
+<div class="steps">
+<div class="step"><strong>Buscar</strong> · Por nombre, negocio o servicio.</div>
+<div class="step"><strong>Filtrar</strong> · Por categoría, provincia y modalidad.</div>
+<div class="step"><strong>Explorar</strong> · Revisa la información de cada emprendedora.</div>
+<div class="step"><strong>⭐ Favoritas</strong> · Guarda perfiles que quieras localizar fácilmente.</div>
+</div>
+</section>
+
+<!-- 06 -->
+<section class="lesson" id="lesson-6">
+<div class="lesson-top"><a href="#academia">← Volver a La Red</a><span>06 / 08</span></div>
+<div class="eyebrow" style="color:#8d123e">La Red · Tutorial 06</div>
+<h2 class="serif">Sinergias</h2>
+<p class="lesson-sub">La Red compara lo que necesitas con lo que otras emprendedoras ofrecen para encontrar conexiones útiles.</p>
+<div class="video" data-video="VIDEO_06"><div class="video-placeholder"><div class="play">▶</div><strong>Aquí irá tu vídeo</strong></div></div>
+<div class="screens"><img src="assets/sinergias.jpg" alt="Sinergias"><img src="assets/necesito.jpg" alt="Qué necesito"><img src="assets/ofrezco.jpg" alt="Qué ofrezco"></div>
+<div class="why"><h3>Cuanto más concretas sean tus palabras, más claras serán tus coincidencias.</h3><p>En tu perfil puedes indicar hasta 12 cosas que necesitas y hasta 12 cosas que puedes ofrecer: servicios, conocimientos, mentorías o recursos.</p></div>
+</section>
+
+<!-- 07 -->
+<section class="lesson" id="lesson-7">
+<div class="lesson-top"><a href="#academia">← Volver a La Red</a><span>07 / 08</span></div>
+<div class="eyebrow" style="color:#8d123e">La Red · Tutorial 07</div>
+<h2 class="serif">El Brindis</h2>
+<p class="lesson-sub">Un espacio para celebrar todo lo que nace cuando nos encontramos.</p>
+<div class="video" data-video="VIDEO_07"><div class="video-placeholder"><div class="play">▶</div><strong>Aquí irá tu vídeo</strong></div></div>
+<div class="screens"><img src="assets/brindis.jpg" alt="El Brindis"><img src="assets/brindis_form.jpg" alt="Formulario para alzar un brindis"></div>
+<div class="steps">
+<div class="step"><strong>¿Qué habéis conseguido juntas?</strong> · La frase que aparecerá primero en el mural.</div>
+<div class="step"><strong>¿Con quién lo has vivido?</strong> · Menciona a las compañeras implicadas.</div>
+<div class="step"><strong>¿Qué ocurrió entre vosotras?</strong> · Colaboración, recomendación, encuentro, mentoría, intercambio...</div>
+<div class="step"><strong>Cuéntanos la historia</strong> · Opcional.</div>
+<div class="step"><strong>Añade una foto</strong> · Opcional.</div>
+</div>
+<div class="why"><h3>El Brindis no es solo para contar tus logros.</h3><p>Es para hacer visible lo que conseguimos juntas y celebrar las conexiones que se convierten en algo real.</p></div>
+</section>
+
+<!-- 08 -->
+<section class="lesson" id="lesson-8">
+<div class="lesson-top"><a href="#academia">← Volver a La Red</a><span>08 / 08</span></div>
+<div class="eyebrow" style="color:#8d123e">La Red · Tutorial 08</div>
+<h2 class="serif">Tu perfil</h2>
+<p class="lesson-sub">Tu perfil es tu carta de presentación dentro de La Red y el lugar donde defines qué puedes aportar y qué estás buscando.</p>
+<div class="video" data-video="VIDEO_08"><div class="video-placeholder"><div class="play">▶</div><strong>Aquí irá tu vídeo</strong></div></div>
+<div class="screens"><img src="assets/perfil.jpg" alt="Mi perfil"><img src="assets/perfil_coincidencias.jpg" alt="Qué ofrezco y qué necesito"></div>
+<div class="steps">
+<div class="step"><strong>Editar perfil</strong> · Mantén actualizada tu información.</div>
+<div class="step"><strong>Vista previa</strong> · Comprueba cómo te verá el resto de la Red.</div>
+<div class="step"><strong>Mis favoritas</strong> · Accede a los perfiles que has guardado.</div>
+<div class="step"><strong>Qué ofrezco y qué necesito</strong> · Alimenta las coincidencias de Sinergias.</div>
+<div class="step"><strong>Mis conexiones</strong> · Consulta tus conexiones dentro de la comunidad.</div>
+<div class="step"><strong>Mis publicaciones de éxitos</strong> · Revisa tus Brindis publicados.</div>
+<div class="step"><strong>Privacidad y seguridad</strong> · Gestiona las opciones relacionadas con tu cuenta.</div>
+</div>
+</section>
+
+<section class="cta">
+<div class="container">
+<h2 class="serif">¿Ya estás preparada para entrar en La Red?</h2>
+<p>Todo empieza con una conexión.</p>
+<a href="APP_URL" target="_blank" rel="noopener">ENTRAR EN LA APP →</a>
+</div>
+</section>
+</main>
+
+<footer>La Clandestina · La Red · Academia</footer>
+</body>
+</html>
